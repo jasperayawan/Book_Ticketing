@@ -1,4 +1,6 @@
+import 'package:booking_app/utils/app_styles.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class HomeScreen extends StatelessWidget {
   // ignore: use_super_parameters
@@ -7,9 +9,10 @@ class HomeScreen extends StatelessWidget {
   @override 
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: const Color(0xFFeeedf2),
+      backgroundColor: Styles.bgColor,
       body: ListView(
         children: [
+          const Gap(40),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -17,11 +20,12 @@ class HomeScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Column(
+                    Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Good Morning"),
-                        Text("Book Tickets"),
+                        Text("Good Morning", style: Styles.headLineStyle3),
+                        const Gap(5),
+                        Text("Book Tickets", style: Styles.headLineStyle1),
                       ],
                     ),
                     Container(
@@ -38,6 +42,20 @@ class HomeScreen extends StatelessWidget {
                       ),
                     )
                   ],
+                ),
+                const Gap(25),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xFFF4F6FD)
+                  ),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.search, color:Color(0xFFBFC205)),
+                      Text("Search", style: Styles.headLineStyle4)
+                    ],
+                  ),
                 )
               ],
             )
