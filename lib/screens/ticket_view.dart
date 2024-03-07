@@ -2,6 +2,7 @@ import 'package:booking_app/utils/app_layout.dart';
 import 'package:booking_app/utils/app_styles.dart';
 import 'package:booking_app/widgets/thick_container.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class TicketView extends StatelessWidget {
   // ignore: use_super_parameters
@@ -16,13 +17,18 @@ class TicketView extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(left: 16),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
+            /*
+            showing the blue part of the card/ticket
+            */
             Container(
               decoration: const BoxDecoration(
                   color: Color(0xFF526799),
                   borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(21),
-                      topRight: Radius.circular(21))),
+                      topRight: Radius.circular(21))
+              ),
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
@@ -61,13 +67,79 @@ class TicketView extends StatelessWidget {
                        ),
                       const ThickContainer(),
                       Expanded(child: Container()),
-                      Text("London",
+                      Text("LDN",
                           style: Styles.headLineStyle3
                               .copyWith(color: Colors.white)),
                     ],
-                  )
+                  ),
+                  const Gap(3),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox(
+                        width: 100, child: Text('New-York', style: Styles.headLineStyle4.copyWith(color: Colors.white)),
+                      ),
+                      Text("8H 30M", style: Styles.headLineStyle4.copyWith(color: Colors.white),),
+                      SizedBox(
+                        width: 100, child: Text('London', textAlign: TextAlign.end ,style: Styles.headLineStyle4.copyWith(color: Colors.white)),
+                      ),
+                    ],)
                 ],
               ),
+            ),
+            /**
+             * showing the orange part of the card/ticket
+             */
+            Container(
+              color: Styles.orangeColor,//Color(0xFFF37B67),
+              child:
+                 Row(
+                  children: [
+                    const SizedBox(
+                      height: 20,
+                      width: 10,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                           topRight :Radius.circular(10),
+                           bottomRight: Radius.circular(10)
+                          )
+                        ),
+                      ),
+                    ),
+                    Expanded(child: LayoutBuilder(
+                      builder: (BuildContext context, BoxConstraints contraints){
+                        return Flex(
+                      direction: Axis.horizontal,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisSize: MainAxisSize.max,
+                      children: List.generate((contraints.constrainWidth()/15).floor(), (index) => const SizedBox(
+                        width: 5, height: 1,
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.white
+                          ),
+                        ),
+                      )),
+                    );
+                      },
+                    )),
+                    const SizedBox(
+                      height: 20,
+                      width: 10,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                           topLeft :Radius.circular(10),
+                           bottomLeft: Radius.circular(10)
+                          )
+                        ),
+                      ),
+                    ),
+                  ],
+                )
             )
           ],
         ),
